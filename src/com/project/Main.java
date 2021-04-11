@@ -15,8 +15,12 @@ public class Main {
 
     private static int getSmallestPositiveInteger(int[] A) {
 
+        // Add all positive integers of the array into a HashSet.
+        // Since we are concern only about the smallest positive integer not in the array
+        // The HashSet removes duplicates from the array to shortened processing time
         Set<Integer> positiveNum = Arrays.stream(A).filter(i -> i > 0).boxed().collect(Collectors.toSet());
 
+        // Iterate through positive numbers and find the number not in HashSet and return it
         return IntStream.rangeClosed(1, A.length + 1).filter(i -> !positiveNum.contains(i)).findFirst().orElse(1);
 
     }
